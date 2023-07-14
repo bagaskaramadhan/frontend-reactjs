@@ -1,23 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
-
+import React, { useState } from "react";
+import "./App.css";
+import Introduction from "./components/introduction";
+import Profile from "./components/profile";
 function App() {
+  const [tambah, setTambah] = useState(0);
+  console.log(tambah);
+  if (tambah < 0) {
+    setTambah(0);
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1>{tambah}</h1>
+      <button onClick={() => setTambah((prev) => prev - 1)}>
+        Kurang 1 Poin
+      </button>
+      <button onClick={() => setTambah((prev) => prev + 1)}>
+        Tambah 1 Poin
+      </button>
+      <Profile />
+      <Introduction name="bagas" />
+      <Introduction name="ana" />
     </div>
   );
 }
